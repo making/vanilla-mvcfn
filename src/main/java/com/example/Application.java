@@ -45,7 +45,7 @@ public class Application {
 		int port = Optional.ofNullable(System.getenv("PORT")).map(Integer::parseInt).orElse(8080);
 		tomcat.getConnector().setPort(port);
 		Context context = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
-		DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext(Routing.routes()));
+		DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext(new Routing().routes()));
 		Tomcat.addServlet(context, "dispatcherServlet", dispatcherServlet).addMapping("/");
 		tomcat.start();
 		tomcat.getServer().await();

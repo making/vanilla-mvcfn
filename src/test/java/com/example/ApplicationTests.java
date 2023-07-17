@@ -15,7 +15,7 @@ class ApplicationTests {
 	MockMvc mockMvc = initMockMvc();
 
 	MockMvc initMockMvc() {
-		StaticWebApplicationContext applicationContext = Application.applicationContext(Routing.routes());
+		StaticWebApplicationContext applicationContext = Application.applicationContext(new Routing().routes());
 		applicationContext.setServletContext(new MockServletContext());
 		applicationContext.refresh();
 		// https://github.com/spring-projects/spring-framework/issues/30477
